@@ -6,26 +6,148 @@
     <title>学习资源 - AI 学习网站</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; }
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; text-align: center; color: white; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .section { background: white; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
-        .section h2 { color: #667eea; margin-bottom: 1rem; }
-        .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
-        .resource-card { border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; transition: transform 0.2s; }
-        .resource-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .resource-card h3 { color: #333; font-size: 1rem; margin-bottom: 0.5rem; }
-        .resource-card .type { display: inline-block; background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; margin-bottom: 0.5rem; }
-        .resource-card a { color: #667eea; text-decoration: none; font-weight: 500; }
-        .resource-card a:hover { text-decoration: underline; }
-        .back { display: inline-block; margin-top: 1rem; color: #667eea; text-decoration: none; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .grid-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .header {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #00ffff 0%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p { color: #a0a0a0; font-size: 1.1rem; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; }
+        .section {
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(10, 10, 20, 0.9) 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, #8a2be2, #00ffff);
+        }
+        .section h2 {
+            color: #8a2be2;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .resource-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        .resource-card:hover::before { left: 100%; }
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
+        }
+        .resource-card h3 {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        .resource-card .type {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(138, 43, 226, 0.2) 100%);
+            color: #00ffff;
+            padding: 0.35rem 0.85rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .resource-card a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .resource-card a:hover {
+            color: #8a2be2;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        .back {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        .back:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #606060;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
     <div class="header">
         <h1>📚 学习资源</h1>
-        <p>精选 AI 学习资源，从入门到精通</p>
+        <p>精选 AI 学习资源 · 从入门到精通</p>
     </div>
     <div class="container">
         <div class="section">
@@ -205,6 +327,9 @@
         </div>
 
         <a href="index.html" class="back">← 返回首页</a>
+    </div>
+    <div class="footer">
+        <p>Powered by Leo AI System | 2026</p>
     </div>
 </body>
 </html>

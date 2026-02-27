@@ -6,31 +6,234 @@
     <title>AI 学习网站 - 四级进阶体系</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
-        .header { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 2rem; text-align: center; color: white; }
-        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .header p { font-size: 1.2rem; opacity: 0.9; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .level-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.2); transition: transform 0.3s; }
-        .level-card:hover { transform: translateY(-5px); }
-        .level-card h2 { color: #667eea; margin-bottom: 0.5rem; }
-        .level-card .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
-        .level-card .description { color: #333; line-height: 1.6; margin-bottom: 1rem; }
-        .level-card .meta { display: flex; gap: 1rem; margin-top: 1rem; font-size: 0.85rem; color: #666; }
-        .level-card .meta span { background: #f0f0f0; padding: 0.25rem 0.75rem; border-radius: 20px; }
-        .level-card a { display: block; margin-top: 1rem; color: #667eea; text-decoration: none; font-weight: 500; }
-        .path { background: white; border-radius: 16px; padding: 2rem; margin-top: 2rem; }
-        .path h2 { color: #667eea; margin-bottom: 1rem; }
-        .career { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .career span { background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; }
-        .footer { text-align: center; padding: 2rem; color: white; opacity: 0.8; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .grid-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .header {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.05), transparent);
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #00ffff 0%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            position: relative;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+        .header p {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            position: relative;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; }
+        .levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .level-card {
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(10, 10, 20, 0.9) 100%);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, #00ffff, #8a2be2);
+        }
+        .level-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
+        }
+        .level-card h2 {
+            color: #00ffff;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        .level-card .subtitle {
+            color: #8a2be2;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .level-card .description {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .level-card .meta {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .level-card .meta span {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        .level-card a {
+            display: block;
+            margin-top: 1.5rem;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .level-card a:hover {
+            color: #8a2be2;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        .path {
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(10, 10, 20, 0.9) 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .path::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, #8a2be2, #00ffff);
+        }
+        .path h2 {
+            color: #8a2be2;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        .path p {
+            color: #b0b0b0;
+            margin: 0.75rem 0;
+            line-height: 1.8;
+        }
+        .path strong {
+            color: #00ffff;
+        }
+        .career {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        .career span {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
+            color: #e0e0e0;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            transition: all 0.3s;
+        }
+        .career span:hover {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.4) 0%, rgba(0, 255, 255, 0.4) 100%);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+        }
+        .resources-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #00ffff 0%, #8a2be2 100%);
+            color: #0a0a0f;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+        }
+        .resources-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.6);
+        }
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            color: #606060;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3); }
+            to { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.5); }
+        }
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
     <div class="header">
-        <h1>🤖 AI 学习网站</h1>
-        <p>从小学到大学，系统化学习人工智能</p>
+        <h1 class="glow">🤖 AI 学习网站</h1>
+        <p>从小学到大学 · 系统化学习人工智能</p>
     </div>
     <div class="container">
         <div class="levels">
@@ -43,7 +246,7 @@
                     <span>👶 零基础</span>
                     <span>📚 3 个模块</span>
                 </div>
-                <a href="elementary.html">查看详情 →</a>
+                <a href="elementary.html">进入学习 →</a>
             </div>
             <div class="level-card">
                 <h2>🎓 初中级</h2>
@@ -54,7 +257,7 @@
                     <span>💻 需编程基础</span>
                     <span>📚 3 个模块</span>
                 </div>
-                <a href="intermediate.html">查看详情 →</a>
+                <a href="intermediate.html">进入学习 →</a>
             </div>
             <div class="level-card">
                 <h2>🎓 高中级</h2>
@@ -65,7 +268,7 @@
                     <span>🧠 需 ML 基础</span>
                     <span>📚 4 个模块</span>
                 </div>
-                <a href="advanced.html">查看详情 →</a>
+                <a href="advanced.html">进入学习 →</a>
             </div>
             <div class="level-card">
                 <h2>🎓 大学级</h2>
@@ -76,29 +279,29 @@
                     <span>🔬 需 DL 基础</span>
                     <span>📚 4 个模块</span>
                 </div>
-                <a href="professional.html">查看详情 →</a>
+                <a href="professional.html">进入学习 →</a>
             </div>
         </div>
         <div class="path">
             <h2>📍 学习路径</h2>
-            <p><strong>总时长:</strong> 39-60 个月</p>
+            <p><strong>总时长:</strong> 39-60 个月 (约 3-5 年)</p>
             <p><strong>前置要求:</strong> 无（小学级从零开始）</p>
             <p><strong>证书:</strong> 每级完成后获得相应证书</p>
-            <h3 style="margin-top:1.5rem; margin-bottom:0.5rem;">🎯 职业方向</h3>
+            <h3 style="margin-top:2rem; margin-bottom:1rem; color: #00ffff;">🎯 职业方向</h3>
             <div class="career">
-                <span>AI 工程师</span>
-                <span>机器学习工程师</span>
-                <span>数据科学家</span>
-                <span>AI 产品经理</span>
-                <span>AI 研究员</span>
+                <span>🚀 AI 工程师</span>
+                <span>🤖 机器学习工程师</span>
+                <span>📊 数据科学家</span>
+                <span>💼 AI 产品经理</span>
+                <span>🔬 AI 研究员</span>
             </div>
-            <h3 style="margin-top:1.5rem; margin-bottom:0.5rem;">📚 学习资源</h3>
+            <h3 style="margin-top:2rem; margin-bottom:1rem; color: #00ffff;">📚 学习资源</h3>
             <p style="margin-bottom:1rem;">精选国内外优质 AI 学习资源，包括课程、书籍、项目实战等</p>
-            <a href="resources.html" style="display:inline-block; background:#667eea; color:white; padding:0.75rem 1.5rem; border-radius:8px; text-decoration:none; font-weight:500;">查看资源 →</a>
+            <a href="resources.html" class="resources-btn">查看资源 →</a>
         </div>
     </div>
     <div class="footer">
-        <p>Generated by Leo AI System | 2026-02-27</p>
+        <p>Powered by Leo AI System | Generated 2026-02-27</p>
     </div>
 </body>
 </html>
