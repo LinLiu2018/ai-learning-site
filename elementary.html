@@ -6,58 +6,269 @@
     <title>小学级 - AI 学习网站</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; }
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; text-align: center; color: white; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        .info { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .info p { margin: 0.5rem 0; }
-        .module { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
-        .module h3 { color: #667eea; margin-bottom: 0.75rem; }
-        .module .topics, .module .activities, .module .outcome { margin: 0.5rem 0; font-size: 0.9rem; }
-        .resources { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .resource { background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; }
-        .back { display: inline-block; margin-top: 1rem; color: #667eea; text-decoration: none; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .grid-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .header {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.15) 0%, rgba(138, 43, 226, 0.15) 100%);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #00ffff 0%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header .subtitle {
+            color: #8a2be2;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; }
+        .info-card {
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(10, 10, 20, 0.9) 100%);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, #00ffff, #8a2be2);
+        }
+        .info-card .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .info-card .meta-item {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .info-card .meta-item .label {
+            color: #8a2be2;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .info-card .meta-item .value {
+            color: #00ffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .section-title {
+            color: #00ffff;
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        .module-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .module-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+            border-color: rgba(138, 43, 226, 0.5);
+        }
+        .module-card h3 {
+            color: #8a2be2;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .module-card .item {
+            margin: 0.5rem 0;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        .module-card .item strong {
+            color: #00ffff;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .resource-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
+        }
+        .resource-card .type {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(138, 43, 226, 0.2) 100%);
+            color: #00ffff;
+            padding: 0.35rem 0.85rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        .resource-card h4 {
+            color: #e0e0e0;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .resource-card a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .resource-card a:hover {
+            color: #8a2be2;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        .back-btn:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #606060;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
     <div class="header">
-        <h1>小学级</h1>
-        <p>AI 启蒙阶段</p>
+        <h1>🎒 小学级</h1>
+        <p class="subtitle">AI 启蒙阶段</p>
     </div>
     <div class="container">
-        <div class="info">
-            <p><strong>📅 时长:</strong> 3-6 个月</p>
-            <p><strong>👥 目标:</strong> 小学生/零基础初学者</p>
-            <p><strong>📖 描述:</strong> 培养对 AI 的兴趣和基础认知</p>
-            <p><strong>✅ 考核:</strong> 完成 3 个 AI 体验活动</p>
+        <div class="info-card">
+            <h2 style="color: #00ffff; margin-bottom: 1rem;">阶段信息</h2>
+            <p style="color: #b0b0b0; line-height: 1.8;">培养对 AI 的兴趣和基础认知，通过游戏和体验了解 AI 是什么、能做什么。</p>
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <div class="label">📅 时长</div>
+                    <div class="value">3-6 个月</div>
+                </div>
+                <div class="meta-item">
+                    <div class="label">👥 目标</div>
+                    <div class="value">小学生/零基础</div>
+                </div>
+                <div class="meta-item">
+                    <div class="label">📚 模块</div>
+                    <div class="value">3 个模块</div>
+                </div>
+                <div class="meta-item">
+                    <div class="label">✅ 考核</div>
+                    <div class="value">3 个体验活动</div>
+                </div>
+            </div>
         </div>
-        <h2 style="margin: 1.5rem 0 1rem;">📚 课程模块</h2>
+
+        <h2 class="section-title">📚 课程模块</h2>
         
-        <div class="module">
+        <div class="module-card">
             <h3>1. 什么是 AI</h3>
-            <div class="topics"><strong>主题:</strong> AI 是什么, AI 能做什么, AI 在哪里</div>
-            <div class="activities"><strong>活动:</strong> AI 应用体验, AI 小游戏</div>
-            <div class="outcome"><strong>目标:</strong> 了解 AI 基本概念</div>
+            <div class="item"><strong>主题:</strong> AI 是什么、AI 能做什么、AI 在哪里</div>
+            <div class="item"><strong>活动:</strong> AI 应用体验、AI 小游戏</div>
+            <div class="item"><strong>目标:</strong> 了解 AI 基本概念</div>
         </div>
-        
-        <div class="module">
+
+        <div class="module-card">
             <h3>2. AI 好朋友</h3>
-            <div class="topics"><strong>主题:</strong> 语音助手, 智能推荐, 图像识别</div>
-            <div class="activities"><strong>活动:</strong> 和 Siri 对话, 体验人脸识别</div>
-            <div class="outcome"><strong>目标:</strong> 认识常见的 AI 应用</div>
+            <div class="item"><strong>主题:</strong> 语音助手、智能推荐、图像识别</div>
+            <div class="item"><strong>活动:</strong> 和 Siri 对话、体验人脸识别</div>
+            <div class="item"><strong>目标:</strong> 认识常见的 AI 应用</div>
         </div>
-        
-        <div class="module">
+
+        <div class="module-card">
             <h3>3. AI 小创客</h3>
-            <div class="topics"><strong>主题:</strong> 简单编程, 图形化编程, AI 绘画</div>
-            <div class="activities"><strong>活动:</strong> Scratch 编程, AI 画画体验</div>
-            <div class="outcome"><strong>目标:</strong> 初步体验 AI 创作</div>
+            <div class="item"><strong>主题:</strong> 简单编程、图形化编程、AI 绘画</div>
+            <div class="item"><strong>活动:</strong> Scratch 编程、AI 画画体验</div>
+            <div class="item"><strong>目标:</strong> 初步体验 AI 创作</div>
         </div>
-        
-        <h2 style="margin: 1.5rem 0 1rem;">📖 学习资源</h2>
-        <div class="resources"><span class="resource">视频: AI 是什么</span><span class="resource">游戏: AI 体验小游戏</span><span class="resource">绘本: AI 启蒙绘本</span></div>
-        <a href="index.html" class="back">← 返回首页</a>
+
+        <h2 class="section-title">📖 学习资源</h2>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <span class="type">视频</span>
+                <h4>AI 是什么 (可汗学院)</h4>
+                <a href="https://www.khanacademy.org/computing/computer-science/csalgorithms/intro-to-algorithms/v/intro-to-algorithms" target="_blank">访问 →</a>
+            </div>
+            <div class="resource-card">
+                <span class="type">视频</span>
+                <h4>给孩子的 AI 科普 (B 站)</h4>
+                <a href="https://www.bilibili.com/video/BV1xx411c7mD" target="_blank">访问 →</a>
+            </div>
+            <div class="resource-card">
+                <span class="type">游戏</span>
+                <h4>Quick Draw (AI 绘画)</h4>
+                <a href="https://quickdraw.withgoogle.com/" target="_blank">访问 →</a>
+            </div>
+            <div class="resource-card">
+                <span class="type">网站</span>
+                <h4>Code.org AI 课程</h4>
+                <a href="https://code.org/ai" target="_blank">访问 →</a>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">← 返回首页</a>
+    </div>
+    <div class="footer">
+        <p>Powered by Leo AI System | 2026</p>
     </div>
 </body>
 </html>

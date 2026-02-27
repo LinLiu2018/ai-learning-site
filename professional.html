@@ -6,65 +6,67 @@
     <title>大学级 - AI 学习网站</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; }
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; text-align: center; color: white; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        .info { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .info p { margin: 0.5rem 0; }
-        .module { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
-        .module h3 { color: #667eea; margin-bottom: 0.75rem; }
-        .module .topics, .module .activities, .module .outcome { margin: 0.5rem 0; font-size: 0.9rem; }
-        .resources { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .resource { background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; }
-        .back { display: inline-block; margin-top: 1rem; color: #667eea; text-decoration: none; }
+        body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; }
+        .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px); background-size: 50px 50px; pointer-events: none; z-index: -1; }
+        .header { background: linear-gradient(135deg, rgba(0, 255, 255, 0.15) 0%, rgba(138, 43, 226, 0.15) 100%); backdrop-filter: blur(10px); padding: 3rem 2rem; text-align: center; border-bottom: 1px solid rgba(0, 255, 255, 0.2); }
+        .header h1 { font-size: 2.5rem; background: linear-gradient(135deg, #00ffff 0%, #8a2be2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+        .header .subtitle { color: #8a2be2; font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; }
+        .info-card { background: linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(10, 10, 20, 0.9) 100%); border: 1px solid rgba(0, 255, 255, 0.2); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
+        .info-card .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .info-card .meta-item { background: rgba(0, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2); border-radius: 12px; padding: 1rem; text-align: center; }
+        .info-card .meta-item .label { color: #8a2be2; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .info-card .meta-item .value { color: #00ffff; font-size: 1.1rem; font-weight: 600; }
+        .section-title { color: #00ffff; font-size: 1.8rem; margin: 2.5rem 0 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid rgba(0, 255, 255, 0.2); }
+        .module-card { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; transition: all 0.3s ease; }
+        .module-card:hover { transform: translateX(8px); box-shadow: 0 0 30px rgba(138, 43, 226, 0.3); }
+        .module-card h3 { color: #8a2be2; font-size: 1.3rem; margin-bottom: 1rem; }
+        .module-card .item { margin: 0.5rem 0; color: #b0b0b0; line-height: 1.6; }
+        .module-card .item strong { color: #00ffff; }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .resource-card { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 255, 255, 0.2); border-radius: 12px; padding: 1.25rem; transition: all 0.3s ease; }
+        .resource-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2); }
+        .resource-card .type { display: inline-block; background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(138, 43, 226, 0.2) 100%); color: #00ffff; padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.75rem; margin-bottom: 0.75rem; }
+        .resource-card h4 { color: #e0e0e0; font-size: 1rem; margin-bottom: 0.5rem; }
+        .resource-card a { color: #00ffff; text-decoration: none; font-weight: 600; }
+        .back-btn { display: inline-block; margin-top: 2rem; color: #00ffff; text-decoration: none; font-weight: 600; padding: 0.75rem 1.5rem; border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 25px; transition: all 0.3s; }
+        .back-btn:hover { background: rgba(0, 255, 255, 0.1); box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+        .footer { text-align: center; padding: 2rem; color: #606060; border-top: 1px solid rgba(0, 255, 255, 0.1); margin-top: 3rem; }
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
     <div class="header">
-        <h1>大学级</h1>
-        <p>AI 专业阶段</p>
+        <h1>🎓 大学级</h1>
+        <p class="subtitle">AI 专业阶段</p>
     </div>
     <div class="container">
-        <div class="info">
-            <p><strong>📅 时长:</strong> 18-24 个月</p>
-            <p><strong>👥 目标:</strong> 大学生/从业者</p>
-            <p><strong>📖 描述:</strong> 前沿技术研究和专业能力培养</p>
-            <p><strong>✅ 考核:</strong> 完成 1 个研究项目和 2 篇技术文章</p>
+        <div class="info-card">
+            <h2 style="color: #00ffff; margin-bottom: 1rem;">阶段信息</h2>
+            <p style="color: #b0b0b0; line-height: 1.8;">前沿技术研究和专业能力培养，掌握大模型技术和 AI 系统架构。</p>
+            <div class="meta-grid">
+                <div class="meta-item"><div class="label">📅 时长</div><div class="value">18-24 个月</div></div>
+                <div class="meta-item"><div class="label">👥 目标</div><div class="value">大学生/从业者</div></div>
+                <div class="meta-item"><div class="label">📚 模块</div><div class="value">4 个模块</div></div>
+                <div class="meta-item"><div class="label">✅ 考核</div><div class="value">1 个研究项目 + 2 篇技术文章</div></div>
+            </div>
         </div>
-        <h2 style="margin: 1.5rem 0 1rem;">📚 课程模块</h2>
-        
-        <div class="module">
-            <h3>1. 大模型技术</h3>
-            <div class="topics"><strong>主题:</strong> LLM 架构, Prompt Engineering, RAG</div>
-            <div class="activities"><strong>活动:</strong> 微调大模型, 构建 AI 应用</div>
-            <div class="outcome"><strong>目标:</strong> 掌握大模型技术栈</div>
+        <h2 class="section-title">📚 课程模块</h2>
+        <div class="module-card"><h3>1. 大模型技术</h3><div class="item"><strong>主题:</strong> LLM 架构、Prompt Engineering、RAG</div><div class="item"><strong>活动:</strong> 微调大模型、构建 AI 应用</div><div class="item"><strong>目标:</strong> 掌握大模型技术栈</div></div>
+        <div class="module-card"><h3>2. AI 系统架构</h3><div class="item"><strong>主题:</strong> 分布式训练、模型压缩、推理优化</div><div class="item"><strong>活动:</strong> 大规模训练实验、模型优化实战</div><div class="item"><strong>目标:</strong> 具备系统设计能力</div></div>
+        <div class="module-card"><h3>3. AI 伦理与安全</h3><div class="item"><strong>主题:</strong> AI 伦理、模型安全、隐私保护</div><div class="item"><strong>活动:</strong> 伦理案例分析、安全审计实践</div><div class="item"><strong>目标:</strong> 具备 AI 伦理意识</div></div>
+        <div class="module-card"><h3>4. 研究能力培养</h3><div class="item"><strong>主题:</strong> 论文阅读、实验设计、学术写作</div><div class="item"><strong>活动:</strong> 复现顶会论文、撰写技术博客</div><div class="item"><strong>目标:</strong> 具备独立研究能力</div></div>
+        <h2 class="section-title">📖 学习资源</h2>
+        <div class="resources-grid">
+            <div class="resource-card"><span class="type">论文</span><h4>Papers With Code</h4><a href="https://paperswithcode.com/" target="_blank">访问 →</a></div>
+            <div class="resource-card"><span class="type">课程</span><h4>李宏毅机器学习</h4><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php" target="_blank">访问 →</a></div>
+            <div class="resource-card"><span class="type">课程</span><h4>Stanford CS224N</h4><a href="http://web.stanford.edu/class/cs224n/" target="_blank">访问 →</a></div>
+            <div class="resource-card"><span class="type">课程</span><h4>Stanford CS231n</h4><a href="http://cs231n.stanford.edu/" target="_blank">访问 →</a></div>
+            <div class="resource-card"><span class="type">社区</span><h4>Hugging Face</h4><a href="https://huggingface.co/" target="_blank">访问 →</a></div>
+            <div class="resource-card"><span class="type">博客</span><h4>Jay Alammar</h4><a href="https://jalammar.github.io/" target="_blank">访问 →</a></div>
         </div>
-        
-        <div class="module">
-            <h3>2. AI 系统架构</h3>
-            <div class="topics"><strong>主题:</strong> 分布式训练, 模型压缩, 推理优化</div>
-            <div class="activities"><strong>活动:</strong> 大规模训练实验, 模型优化实战</div>
-            <div class="outcome"><strong>目标:</strong> 具备系统设计能力</div>
-        </div>
-        
-        <div class="module">
-            <h3>3. AI 伦理与安全</h3>
-            <div class="topics"><strong>主题:</strong> AI 伦理, 模型安全, 隐私保护</div>
-            <div class="activities"><strong>活动:</strong> 伦理案例分析, 安全审计实践</div>
-            <div class="outcome"><strong>目标:</strong> 具备 AI 伦理意识</div>
-        </div>
-        
-        <div class="module">
-            <h3>4. 研究能力培养</h3>
-            <div class="topics"><strong>主题:</strong> 论文阅读, 实验设计, 学术写作</div>
-            <div class="activities"><strong>活动:</strong> 复现顶会论文, 撰写技术博客</div>
-            <div class="outcome"><strong>目标:</strong> 具备独立研究能力</div>
-        </div>
-        
-        <h2 style="margin: 1.5rem 0 1rem;">📖 学习资源</h2>
-        <div class="resources"><span class="resource">论文: 顶会论文精选</span><span class="resource">开源: GitHub 优质项目</span><span class="resource">社区: AI 技术社区</span></div>
-        <a href="index.html" class="back">← 返回首页</a>
+        <a href="index.html" class="back-btn">← 返回首页</a>
     </div>
+    <div class="footer"><p>Powered by Leo AI System | 2026</p></div>
 </body>
 </html>
