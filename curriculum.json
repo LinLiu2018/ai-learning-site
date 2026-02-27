@@ -10,62 +10,16 @@
       "target": "小学生/零基础初学者",
       "duration": "3-6 个月",
       "modules": [
-        {
-          "name": "什么是 AI",
-          "topics": [
-            "AI 是什么",
-            "AI 能做什么",
-            "AI 在哪里"
-          ],
-          "activities": [
-            "AI 应用体验",
-            "AI 小游戏"
-          ],
-          "outcome": "了解 AI 基本概念"
-        },
-        {
-          "name": "AI 好朋友",
-          "topics": [
-            "语音助手",
-            "智能推荐",
-            "图像识别"
-          ],
-          "activities": [
-            "和 Siri 对话",
-            "体验人脸识别"
-          ],
-          "outcome": "认识常见的 AI 应用"
-        },
-        {
-          "name": "AI 小创客",
-          "topics": [
-            "简单编程",
-            "图形化编程",
-            "AI 绘画"
-          ],
-          "activities": [
-            "Scratch 编程",
-            "AI 画画体验"
-          ],
-          "outcome": "初步体验 AI 创作"
-        }
+        {"name": "什么是 AI", "topics": ["AI 是什么", "AI 能做什么", "AI 在哪里"], "activities": ["AI 应用体验", "AI 小游戏"], "outcome": "了解 AI 基本概念"},
+        {"name": "AI 好朋友", "topics": ["语音助手", "智能推荐", "图像识别"], "activities": ["和 Siri 对话", "体验人脸识别"], "outcome": "认识常见的 AI 应用"},
+        {"name": "AI 小创客", "topics": ["简单编程", "图形化编程", "AI 绘画"], "activities": ["Scratch 编程", "AI 画画体验"], "outcome": "初步体验 AI 创作"}
       ],
       "resources": [
-        {
-          "type": "视频",
-          "name": "AI 是什么",
-          "url": "待添加"
-        },
-        {
-          "type": "游戏",
-          "name": "AI 体验小游戏",
-          "url": "待添加"
-        },
-        {
-          "type": "绘本",
-          "name": "AI 启蒙绘本",
-          "url": "待添加"
-        }
+        {"type": "视频", "name": "AI 是什么 (可汗学院)", "url": "https://www.khanacademy.org/computing/computer-science/csalgorithms/intro-to-algorithms/v/intro-to-algorithms"},
+        {"type": "视频", "name": "给孩子的 AI 科普", "url": "https://www.bilibili.com/video/BV1xx411c7mD"},
+        {"type": "游戏", "name": "AI 体验小游戏", "url": "https://quickdraw.withgoogle.com/"},
+        {"type": "绘本", "name": "AI 启蒙绘本", "url": "https://item.jd.com/12667892.html"},
+        {"type": "网站", "name": "Code.org AI 课程", "url": "https://code.org/ai"}
       ],
       "assessment": "完成 3 个 AI 体验活动"
     },
@@ -77,62 +31,17 @@
       "target": "初中生/有编程基础",
       "duration": "6-12 个月",
       "modules": [
-        {
-          "name": "Python 编程基础",
-          "topics": [
-            "Python 语法",
-            "数据结构",
-            "函数"
-          ],
-          "activities": [
-            "编写小程序",
-            "数据处理练习"
-          ],
-          "outcome": "掌握 Python 基础"
-        },
-        {
-          "name": "机器学习入门",
-          "topics": [
-            "什么是机器学习",
-            "监督学习",
-            "分类与回归"
-          ],
-          "activities": [
-            "训练简单模型",
-            "数据可视化"
-          ],
-          "outcome": "理解机器学习原理"
-        },
-        {
-          "name": "AI 项目实战",
-          "topics": [
-            "情感分析",
-            "图像分类",
-            "智能对话"
-          ],
-          "activities": [
-            "制作聊天机器人",
-            "图片识别项目"
-          ],
-          "outcome": "完成 2-3 个 AI 项目"
-        }
+        {"name": "Python 编程基础", "topics": ["Python 语法", "数据结构", "函数"], "activities": ["编写小程序", "数据处理练习"], "outcome": "掌握 Python 基础"},
+        {"name": "机器学习入门", "topics": ["什么是机器学习", "监督学习", "分类与回归"], "activities": ["训练简单模型", "数据可视化"], "outcome": "理解机器学习原理"},
+        {"name": "AI 项目实战", "topics": ["情感分析", "图像分类", "智能对话"], "activities": ["制作聊天机器人", "图片识别项目"], "outcome": "完成 2-3 个 AI 项目"}
       ],
       "resources": [
-        {
-          "type": "教程",
-          "name": "Python 入门教程",
-          "url": "待添加"
-        },
-        {
-          "type": "课程",
-          "name": "机器学习入门",
-          "url": "待添加"
-        },
-        {
-          "type": "项目",
-          "name": "AI 实战项目集",
-          "url": "待添加"
-        }
+        {"type": "教程", "name": "Python 入门教程 (廖雪峰)", "url": "https://www.liaoxuefeng.com/wiki/1016959663602400"},
+        {"type": "课程", "name": "吴恩达机器学习 (Coursera)", "url": "https://www.coursera.org/learn/machine-learning"},
+        {"type": "课程", "name": "Python for Everybody", "url": "https://www.py4e.com/"},
+        {"type": "书籍", "name": "Python 编程：从入门到实践", "url": "https://item.jd.com/11966218.html"},
+        {"type": "项目", "name": "Kaggle Learn", "url": "https://www.kaggle.com/learn"},
+        {"type": "工具", "name": "Google Colab", "url": "https://colab.research.google.com/"}
       ],
       "assessment": "完成 3 个 Python 项目和 2 个 ML 项目"
     },
@@ -144,75 +53,19 @@
       "target": "高中生/有 ML 基础",
       "duration": "12-18 个月",
       "modules": [
-        {
-          "name": "深度学习基础",
-          "topics": [
-            "神经网络",
-            "反向传播",
-            "优化算法"
-          ],
-          "activities": [
-            "搭建神经网络",
-            "调参实验"
-          ],
-          "outcome": "掌握深度学习原理"
-        },
-        {
-          "name": "计算机视觉",
-          "topics": [
-            "CNN",
-            "目标检测",
-            "图像分割"
-          ],
-          "activities": [
-            "图像分类项目",
-            "目标检测实战"
-          ],
-          "outcome": "掌握 CV 核心技术"
-        },
-        {
-          "name": "自然语言处理",
-          "topics": [
-            "RNN",
-            "Transformer",
-            "语言模型"
-          ],
-          "activities": [
-            "文本分类",
-            "情感分析项目"
-          ],
-          "outcome": "掌握 NLP 核心技术"
-        },
-        {
-          "name": "AI 工程化",
-          "topics": [
-            "模型部署",
-            "API 开发",
-            "性能优化"
-          ],
-          "activities": [
-            "部署模型到云端",
-            "开发 AI 应用"
-          ],
-          "outcome": "具备工程落地能力"
-        }
+        {"name": "深度学习基础", "topics": ["神经网络", "反向传播", "优化算法"], "activities": ["搭建神经网络", "调参实验"], "outcome": "掌握深度学习原理"},
+        {"name": "计算机视觉", "topics": ["CNN", "目标检测", "图像分割"], "activities": ["图像分类项目", "目标检测实战"], "outcome": "掌握 CV 核心技术"},
+        {"name": "自然语言处理", "topics": ["RNN", "Transformer", "语言模型"], "activities": ["文本分类", "情感分析项目"], "outcome": "掌握 NLP 核心技术"},
+        {"name": "AI 工程化", "topics": ["模型部署", "API 开发", "性能优化"], "activities": ["部署模型到云端", "开发 AI 应用"], "outcome": "具备工程落地能力"}
       ],
       "resources": [
-        {
-          "type": "课程",
-          "name": "深度学习专项课程",
-          "url": "待添加"
-        },
-        {
-          "type": "书籍",
-          "name": "深度学习花书",
-          "url": "待添加"
-        },
-        {
-          "type": "框架",
-          "name": "PyTorch/TensorFlow",
-          "url": "待添加"
-        }
+        {"type": "课程", "name": "吴恩达深度学习专项课程", "url": "https://www.coursera.org/specializations/deep-learning"},
+        {"type": "书籍", "name": "深度学习花书 (中文)", "url": "https://github.com/exacity/deeplearningbook-chinese"},
+        {"type": "框架", "name": "PyTorch 教程", "url": "https://pytorch.org/tutorials/"},
+        {"type": "框架", "name": "TensorFlow 教程", "url": "https://www.tensorflow.org/tutorials"},
+        {"type": "课程", "name": "Fast.ai 实战课程", "url": "https://course.fast.ai/"},
+        {"type": "书籍", "name": "动手学深度学习", "url": "https://zh.d2l.ai/"},
+        {"type": "项目", "name": "Hugging Face 课程", "url": "https://huggingface.co/learn"}
       ],
       "assessment": "完成 4 个深度学习项目和 1 个综合项目"
     },
@@ -224,77 +77,46 @@
       "target": "大学生/从业者",
       "duration": "18-24 个月",
       "modules": [
-        {
-          "name": "大模型技术",
-          "topics": [
-            "LLM 架构",
-            "Prompt Engineering",
-            "RAG"
-          ],
-          "activities": [
-            "微调大模型",
-            "构建 AI 应用"
-          ],
-          "outcome": "掌握大模型技术栈"
-        },
-        {
-          "name": "AI 系统架构",
-          "topics": [
-            "分布式训练",
-            "模型压缩",
-            "推理优化"
-          ],
-          "activities": [
-            "大规模训练实验",
-            "模型优化实战"
-          ],
-          "outcome": "具备系统设计能力"
-        },
-        {
-          "name": "AI 伦理与安全",
-          "topics": [
-            "AI 伦理",
-            "模型安全",
-            "隐私保护"
-          ],
-          "activities": [
-            "伦理案例分析",
-            "安全审计实践"
-          ],
-          "outcome": "具备 AI 伦理意识"
-        },
-        {
-          "name": "研究能力培养",
-          "topics": [
-            "论文阅读",
-            "实验设计",
-            "学术写作"
-          ],
-          "activities": [
-            "复现顶会论文",
-            "撰写技术博客"
-          ],
-          "outcome": "具备独立研究能力"
-        }
+        {"name": "大模型技术", "topics": ["LLM 架构", "Prompt Engineering", "RAG"], "activities": ["微调大模型", "构建 AI 应用"], "outcome": "掌握大模型技术栈"},
+        {"name": "AI 系统架构", "topics": ["分布式训练", "模型压缩", "推理优化"], "activities": ["大规模训练实验", "模型优化实战"], "outcome": "具备系统设计能力"},
+        {"name": "AI 伦理与安全", "topics": ["AI 伦理", "模型安全", "隐私保护"], "activities": ["伦理案例分析", "安全审计实践"], "outcome": "具备 AI 伦理意识"},
+        {"name": "研究能力培养", "topics": ["论文阅读", "实验设计", "学术写作"], "activities": ["复现顶会论文", "撰写技术博客"], "outcome": "具备独立研究能力"}
       ],
       "resources": [
-        {
-          "type": "论文",
-          "name": "顶会论文精选",
-          "url": "待添加"
-        },
-        {
-          "type": "开源",
-          "name": "GitHub 优质项目",
-          "url": "待添加"
-        },
-        {
-          "type": "社区",
-          "name": "AI 技术社区",
-          "url": "待添加"
-        }
+        {"type": "论文", "name": "Papers With Code", "url": "https://paperswithcode.com/"},
+        {"type": "课程", "name": "李宏毅机器学习", "url": "https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php"},
+        {"type": "课程", "name": "Stanford CS224N (NLP)", "url": "http://web.stanford.edu/class/cs224n/"},
+        {"type": "课程", "name": "Stanford CS231n (CV)", "url": "http://cs231n.stanford.edu/"},
+        {"type": "开源", "name": "GitHub 优质项目", "url": "https://github.com/topics/machine-learning"},
+        {"type": "社区", "name": "Hugging Face", "url": "https://huggingface.co/"},
+        {"type": "社区", "name": "Reddit ML", "url": "https://www.reddit.com/r/MachineLearning/"},
+        {"type": "博客", "name": "Jay Alammar 博客", "url": "https://jalammar.github.io/"},
+        {"type": "实践", "name": "OpenClaw 技能开发", "url": "https://github.com/openclaw/openclaw"}
       ],
       "assessment": "完成 1 个研究项目和 2 篇技术文章"
     }
-  ]
+  ],
+  "learning_path": {
+    "total_duration": "39-60 个月",
+    "prerequisites": "无（小学级从零开始）",
+    "certificate": "每级完成后获得相应证书",
+    "career_paths": ["AI 工程师", "机器学习工程师", "数据科学家", "AI 产品经理", "AI 研究员"]
+  },
+  "additional_resources": {
+    "chinese_courses": [
+      {"name": "百度 AI Studio", "url": "https://aistudio.baidu.com/"},
+      {"name": "飞桨深度学习学院", "url": "https://www.paddlepaddle.org.cn/edu"},
+      {"name": "阿里云天池", "url": "https://tianchi.aliyun.com/"}
+    ],
+    "practice_platforms": [
+      {"name": "Kaggle", "url": "https://www.kaggle.com/"},
+      {"name": "LeetCode", "url": "https://leetcode.com/"},
+      {"name": "牛客网", "url": "https://www.nowcoder.com/"}
+    ],
+    "communities": [
+      {"name": "GitHub", "url": "https://github.com/"},
+      {"name": "Stack Overflow", "url": "https://stackoverflow.com/"},
+      {"name": "知乎 AI 话题", "url": "https://www.zhihu.com/topic/19552832"}
+    ]
+  }
 }
